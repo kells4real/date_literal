@@ -15,11 +15,14 @@ convert_time = ConvertTime(time).slug_date_time
 
 ##### Converts Date Literal
 convert_time = ConvertTime(time).slug_date
-
 This returns the date or date-time in seconds. You can add an optional parameter to specify what you want.
+
+Note: You can use the slug_date class function on a DateTime object if you wish to use only the date part of the DateTime object, 
+but cannot use the slug_date_time class function on a Date object, only on DateTime objects.
 
 #### Specific conversion to days
 convert_time = ConvertTime(time, 'd').slug_date_time
+convert_time = ConvertTime(time, 'd').slug_date
 
 #### Specific conversion to hours
 convert_time = ConvertTime(time, 'h').slug_date_time
