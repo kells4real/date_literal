@@ -4,7 +4,7 @@ setup(
     setup_requires=['wheel'],
     name='date_time_literal',
     packages=['date_time_literal'],
-    version='1.0.1',
+    version='1.0.2',
     description='date-time-literal is '
                 'a python module that helps convert date-time or'
                 ' date to literal days, hours, seconds, or even minutes. Compare two DateTime or Date objects, by'

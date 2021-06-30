@@ -1,6 +1,6 @@
 Metadata-Version: 1.2
 Name: date-time-literal
-Version: 1.0.1
+Version: 1.0.2
 Summary: date-time-literal is a python module that helps convert date-time or date to literal days, hours, seconds, or even minutes. Compare two DateTime or Date objects, by converting the objects to literal days, hours, minutes, or even seconds if you want to be precise. 
 Home-page: https://github.com/kells4real/date_literal
 Author: Kelvin Sajere

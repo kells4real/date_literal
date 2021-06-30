@@ -6,7 +6,7 @@ pip install date_time_literal
 
 ## Usage
 ### CONVERT DATE TIME
-from date_time_literal.classes import ConvertTime
+from date_time_literal.literal import ConvertTime
 from django.utils import timezone
 time = timezone.now()
 
@@ -30,7 +30,7 @@ convert_time = ConvertTime(time, 'm').slug_date_time
 The default conversion if none is specified is to seconds
 
 ### CHECK DATE-TIME OR DATE DIFFERENCE BETWEEN TWO DATE-TIME OR DATE LITERALS
-from date_time_literal.functions import date_time_diff, date_diff
+from date_time_literal.difference import date_time_diff, date_diff
 
 date_l = date_diff(date1, date2, 'd')
 date_time_l = date_time_diff(date_time1, date_time2, 'd')
