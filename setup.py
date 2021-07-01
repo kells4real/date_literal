@@ -1,10 +1,16 @@
 from setuptools import setup
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     setup_requires=['wheel'],
     name='date_time_literal',
     packages=['date_time_literal'],
-    version='1.0.2',
+    version='1.0.3',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     description='date-time-literal is '
                 'a python module that helps convert date-time or'
                 ' date to literal days, hours, seconds, or even minutes. Compare two DateTime or Date objects, by'
