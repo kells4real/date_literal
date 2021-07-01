@@ -5,6 +5,9 @@ A python package to convert date or datetime formats to literal days, hours, min
 pip install date_time_literal
 
 ## Usage
+#### IMPORTANT
+DateTime or Date objects must be in the default 'Y-M-D Hr:Min:Sec' and 'Y-M-D' formats respectively.
+
 ### CONVERT DATE TIME
 from date_time_literal.literal import ConvertTime
 from django.utils import timezone
