@@ -1,5 +1,7 @@
 # date_literal
-A python package to convert date or datetime formats to literal days, hours, minutes or seconds for comparison or whatever.
+A python package to convert date or datetime formats to literal days, hours, minutes or seconds for comparison or whatever. 
+For example, you can convert DateTime objects to know just how much of a difference there is between them, or you just want 
+to get human read-able format of DateTime or Date objects.
 
 ## Installation
 pip install date_time_literal
@@ -9,7 +11,7 @@ pip install date_time_literal
 DateTime or Date objects must be in the default 'Y-M-D Hr:Min:Sec' and 'Y-M-D' formats respectively.
 
 ### CONVERT DATE TIME
-from date_time_literal.literal import ConvertTime
+from date_time_literal import ConvertTime
 from django.utils import timezone
 time = timezone.now()
 
@@ -36,7 +38,7 @@ convert_time = ConvertTime(time, 'm').slug_date_time
 The default conversion if none is specified is to seconds
 
 ### CHECK DATE-TIME OR DATE DIFFERENCE BETWEEN TWO DATE-TIME OR DATE LITERALS
-from date_time_literal.difference import date_time_diff, date_diff
+from date_time_literal import date_time_diff, date_diff
 
 date_l = date_diff(date1, date2, 'd')
 date_time_l = date_time_diff(date_time1, date_time2, 'd')
