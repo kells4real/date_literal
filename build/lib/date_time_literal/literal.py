@@ -20,9 +20,9 @@ class ConvertTime:
         if '+' in secs:
             secs = secs.split('+')[0]
         secs_int = int(secs)
-        year_in_days = float(i) * 365.25
+        year_in_days = int(i) * 365
         years = int(year_in_days)
-        months = int(float(j) * 30.5)
+        months = int(j) * 30
         days = int(k)
         if self.time_ == 'm':
             get_days_mins = (hrs * 60) + mins
@@ -48,9 +48,9 @@ class ConvertTime:
         i = second[0]
         j = second[1]
         k = third.split(" ")[0]
-        year_in_days = float(i) * 365.25
+        year_in_days = int(i) * 365
         years = int(year_in_days)
-        months = int(float(j) * 30.5)
+        months = int(j) * 30
         days = int(k)
         if self.time_ == 'm':
             get_mins = (years + months + days) * 24 * 60
@@ -89,9 +89,9 @@ class DateDiff:
         if '+' in secs:
             secs = secs.split('+')[0]
         secs_int = int(secs)
-        year_in_days = float(i) * 365.25
+        year_in_days = int(i) * 365
         years = int(year_in_days)
-        months = int(float(j) * 30.5)
+        months = int(j) * 30
         days = int(k)
 
         # time2
@@ -109,74 +109,74 @@ class DateDiff:
         if '+' in secs2:
             secs2 = secs2.split('+')[0]
         secs_int2 = int(secs2)
-        year_in_days2 = float(i2) * 365.25
+        year_in_days2 = int(i2) * 365
         years2 = int(year_in_days2)
-        months2 = int(float(j2) * 30.5)
+        months2 = int(j2) * 30
         days2 = int(k2)
 
-        if self.time_ == 'm':
+        if self.time_ == 'm' or self.time_ == 'M':
             get_days_mins = (hrs * 60) + mins
             get_years_mins = (years + months + days) * 24 * 60
             get_days_mins2 = (hrs2 * 60) + mins2
             get_years_mins2 = (years2 + months2 + days2) * 24 * 60
             return (get_years_mins + get_days_mins) - (get_years_mins2 + get_days_mins2)
-        elif self.time_ == 'h':
-            get_years_hrs = (years + months + days) * 24
-            get_years_hrs2 = (years2 + months2 + days2) * 24
-            return (get_years_hrs + hrs) - (get_years_hrs2 + hrs2)
-        elif self.time_ == 'd':
-            get_years_days = years + months + days
-            get_years_days2 = years2 + months2 + days2
-            return get_years_days - get_years_days2
+        elif self.time_ == 'h' or self.time_ == 'H':
+            get_hrs = (years + months + days) * 24
+            get_hrs2 = (years2 + months2 + days2) * 24
+            return get_hrs - get_hrs2
+        elif self.time_ == 'd' or self.time_ == 'D':
+            get_days = years + months + days
+            get_days2 = years2 + months2 + days2
+            return get_days - get_days2
         else:
             get_days_secs = (hrs * 60 * 60) + (mins * 60) + secs_int
             get_years_secs = (years + months + days) * 24 * 60 * 60
             get_days_secs2 = (hrs2 * 60 * 60) + (mins2 * 60) + secs_int2
             get_years_secs2 = (years2 + months2 + days2) * 24 * 60 * 60
-            return (get_years_secs + get_days_secs) - (get_years_secs2 + get_days_secs2)
+            return (get_years_secs + get_days_secs) - (get_days_secs2 + get_years_secs2)
 
     @property
     def date_diff(self):
         # time 1
-        slug_time: str = str(self.time1)
+        slug_time = str(self.time1)
         first = slug_time.split("-")
         second = first[0:2]
         third = first[2]
         i = second[0]
         j = second[1]
         k = third.split(" ")[0]
-        year_in_days = float(i) * 365.25
+        year_in_days = int(i) * 365
         years = int(year_in_days)
-        months = int(float(j) * 30.5)
+        months = int(j) * 30
         days = int(k)
 
         # time 2
-        slug_time2: str = str(self.time2)
-        first2 = slug_time2.split("-")
+        slug_time = str(self.time2)
+        first2 = slug_time.split("-")
         second2 = first2[0:2]
         third2 = first2[2]
         i2 = second2[0]
         j2 = second2[1]
         k2 = third2.split(" ")[0]
-        year_in_days2 = float(i2) * 365.25
-        years2 = int(year_in_days2)
-        months2 = int(float(j2) * 30.5)
+        year_in_days2 = int(i2) * 365
+        years2 = int(year_in_days)
+        months2 = int(j2) * 30
         days2 = int(k2)
 
-        if self.time_ == 'm':
+        if self.time_ == 'm' or self.time_ == 'm':
             get_mins = (years + months + days) * 24 * 60
             get_mins2 = (years2 + months2 + days2) * 24 * 60
             return get_mins - get_mins2
-        elif self.time_ == 'h':
+        elif self.time_ == 'h' or self.time_ == 'H':
             get_hrs = (years + months + days) * 24
             get_hrs2 = (years2 + months2 + days2) * 24
             return get_hrs - get_hrs2
-        elif self.time_ == 'd':
+        elif self.time_ == 'd' or self.time_ == 'D':
             get_days = years + months + days
             get_days2 = years2 + months2 + days2
             return get_days - get_days2
         else:
             get_secs = (years + months + days) * 24 * 60 * 60
             get_secs2 = (years2 + months2 + days2) * 24 * 60 * 60
-            return get_secs2
+            return get_secs - get_secs2
 
