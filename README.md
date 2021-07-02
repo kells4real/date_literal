@@ -80,10 +80,10 @@ You can also use the convert_time function to convert between times
 from date_time_literal import convert_time
 
 # Converts between years, days, hours, minutes, and seconds
-print(convert_time('365', 'd', 'y')) # Converts 365 days to years
-print(convert_time('5', 'y', 'd')) # Converts 5 years to days
-print(convert_time('5', 'y', 'h')) # Converts 5 years to hours
-print(convert_time('5', 'd', 's')) # Converts 5 days to seconds
+print(convert_time(365, 'd', 'y')) # Converts 365 days to years
+print(convert_time(5, 'y', 'd')) # Converts 5 years to days
+print(convert_time(5, 'y', 'h')) # Converts 5 years to hours
+print(convert_time(5, 'd', 's')) # Converts 5 days to seconds
 # etc
 ```
 

@@ -8,7 +8,7 @@ setup(
     setup_requires=['wheel'],
     name='date_time_literal',
     packages=['date_time_literal'],
-    version='1.0.5',
+    version='1.0.6',
     long_description=long_description,
     long_description_content_type='text/markdown',
     description='date-time-literal is '
