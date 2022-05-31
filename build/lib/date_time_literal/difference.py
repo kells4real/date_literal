@@ -1,4 +1,5 @@
 
+# Returns more accurate readings
 def date_time_diff(time1, time2, time_='s'):
     # time 1
     slug_time1 = str(time1)
@@ -40,27 +41,20 @@ def date_time_diff(time1, time2, time_='s'):
     months2 = int(j2) * 30
     days2 = int(k2)
 
-    if time_ == 'm' or time_ == 'M':
-        get_days_mins = (hrs * 60) + mins
-        get_years_mins = (years + months + days) * 24 * 60
-        get_days_mins2 = (hrs2 * 60) + mins2
-        get_years_mins2 = (years2 + months2 + days2) * 24 * 60
-        return (get_years_mins + get_days_mins) - (get_years_mins2 + get_days_mins2)
-    elif time_ == 'h' or time_ == 'H':
-        get_hrs = (years + months + days) * 24
-        get_hrs2 = (years2 + months2 + days2) * 24
-        return get_hrs - get_hrs2
-    elif time_ == 'd' or time_ == 'D':
-        get_days = years + months + days
-        get_days2 = years2 + months2 + days2
-        return get_days - get_days2
-    else:
-        get_days_secs = (hrs * 60 * 60) + (mins * 60) + secs_int
-        get_years_secs = (years + months + days) * 24 * 60 * 60
-        get_days_secs2 = (hrs2 * 60 * 60) + (mins2 * 60) + secs_int2
-        get_years_secs2 = (years2 + months2 + days2) * 24 * 60 * 60
-        return (get_years_secs + get_days_secs) - (get_days_secs2 + get_years_secs2)
+    get_days_secs = (hrs * 60 * 60) + (mins * 60) + secs_int
+    get_years_secs = (years + months + days) * 24 * 60 * 60
+    get_days_secs2 = (hrs2 * 60 * 60) + (mins2 * 60) + secs_int2
+    get_years_secs2 = (years2 + months2 + days2) * 24 * 60 * 60
+    result = (get_years_secs + get_days_secs) - (get_days_secs2 + get_years_secs2)
 
+    if time_ == 'm' or time_ == 'M':
+        return round(result / 60, 2)
+    elif time_ == 'h' or time_ == 'H':
+        return round((result / 60) / 60, 2)
+    elif time_ == 'd' or time_ == 'D':
+        return round(((result / 60) / 60) / 24, 2)
+    else:
+        return result
 
 def date_diff(time1, time2, time_='s'):
     # time 1

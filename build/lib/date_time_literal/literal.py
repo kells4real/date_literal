@@ -29,8 +29,9 @@ class ConvertTime:
             get_years_mins = (years + months + days) * 24 * 60
             return get_years_mins + get_days_mins
         elif self.time_ == 'h':
-            get_years_hrs = (years + months + days) * 24
-            return get_years_hrs + hrs
+            get_days_mins = (hrs * 60) + mins
+            get_years_mins = (years + months + days) * 24 * 60
+            return round((get_years_mins + get_days_mins) / 60, 2)
         elif self.time_ == 'd':
             get_years_days = years + months + days
             return get_years_days
@@ -56,7 +57,7 @@ class ConvertTime:
             get_mins = (years + months + days) * 24 * 60
             return get_mins
         elif self.time_ == 'h':
-            get_hrs = (years + months + days) * 24
+            get_hrs = round(((years + months + days) * 24 * 60) / 60, 2)
             return get_hrs
         elif self.time_ == 'd':
             get_days = years + months + days
@@ -121,9 +122,11 @@ class DateDiff:
             get_years_mins2 = (years2 + months2 + days2) * 24 * 60
             return (get_years_mins + get_days_mins) - (get_years_mins2 + get_days_mins2)
         elif self.time_ == 'h' or self.time_ == 'H':
-            get_hrs = (years + months + days) * 24
-            get_hrs2 = (years2 + months2 + days2) * 24
-            return get_hrs - get_hrs2
+            get_days_mins = (hrs * 60) + mins
+            get_years_mins = (years + months + days) * 24 * 60
+            get_days_mins2 = (hrs2 * 60) + mins2
+            get_years_mins2 = (years2 + months2 + days2) * 24 * 60
+            return round((get_years_mins + get_days_mins) - (get_years_mins2 + get_days_mins2) / 60, 2)
         elif self.time_ == 'd' or self.time_ == 'D':
             get_days = years + months + days
             get_days2 = years2 + months2 + days2
@@ -168,9 +171,9 @@ class DateDiff:
             get_mins2 = (years2 + months2 + days2) * 24 * 60
             return get_mins - get_mins2
         elif self.time_ == 'h' or self.time_ == 'H':
-            get_hrs = (years + months + days) * 24
-            get_hrs2 = (years2 + months2 + days2) * 24
-            return get_hrs - get_hrs2
+            get_mins = (years + months + days) * 24 * 60
+            get_mins2 = (years2 + months2 + days2) * 24 * 60
+            return round((get_mins - get_mins2) / 60, 2)
         elif self.time_ == 'd' or self.time_ == 'D':
             get_days = years + months + days
             get_days2 = years2 + months2 + days2
