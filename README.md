@@ -68,7 +68,7 @@ date_time2 = '2021-03-21 23:16:45.735963'
 date_l = date_diff(date1, date2, 'd')
 date_time_l = date_time_diff(date_time1, date_time2, 'd')
 
-# This will return the difference in value between date_l and date_time_l in days. You can use the 
+# date_time_l will return the difference in value between date_time1 and date_time2 in days. You can use the 
 # corresponding string literal to get for minutes, hours and seconds which is the default value.
 
 ```
