@@ -70,6 +70,8 @@ date_time_l = date_time_diff(date_time1, date_time2, 'd')
 
 # date_time_l will return the difference in value between date_time1 and date_time2 in days. You can use the 
 # corresponding string literal to get for minutes, hours and seconds which is the default value.
+# date_time_diff returns the difference in two dateTimes to the second. This should be used when you need to get 
+# date time difference to the last second
 
 ```
 
