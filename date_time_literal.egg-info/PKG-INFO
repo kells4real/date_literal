@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: date-time-literal
-Version: 1.0.8
+Version: 1.1.0
 Summary: date-time-literal is a python module that helps convert date-time or date to literal days, hours, seconds, or even minutes. Compare two DateTime or Date objects, by converting the objects to literal days, hours, minutes, or even seconds if you want to be precise. 
 Home-page: https://github.com/kells4real/date_literal
 Download-URL: https://github.com/kells4real/date_literal/archive/refs/tags/1.0.0.tar.gz
@@ -31,14 +31,14 @@ DateTime or Date objects must be in the default 'Y-M-D Hr:Min:Sec' and 'Y-M-D' f
 from django.utils import timezone
 time = timezone.now()
 from date_time_literal import ConvertTime
-convert_time = ConvertTime(time).slug_date_time
+convert_time = ConvertTime(time).convert_time
 ```
 ##### Converts Date Literal
-convert_time = ConvertTime(time).slug_date
-This returns the date or date-time in seconds. You can add an optional parameter to specify what you want.
+convert_time = ConvertTime(time).convert
+This returns the date or date_time in seconds. You can add an optional parameter to specify what you want.
 
-Note: You can use the slug_date class function on a DateTime object if you wish to use only the date part of the DateTime object, 
-but cannot use the slug_date_time class function on a Date object, only on DateTime objects.
+Note: You can use the convert class function on a DateTime object if you wish to use only the date part of the DateTime object, 
+but cannot use the convert_time class function on a Date object, only on DateTime objects.
 
 #### Specific conversion to days
 
@@ -50,8 +50,8 @@ from date_time_literal import ConvertTime
 time2 = datetime.now()
 time = timezone.now()
 
-convert_time = ConvertTime(time, 'd').slug_date_time
-convert_time2 = ConvertTime(time2, 'd').slug_date
+convert_time = ConvertTime(time, 'd').convert_time
+convert_time2 = ConvertTime(time2, 'd').convert
 ```
 
 #### Specific conversion to hours
@@ -60,23 +60,23 @@ convert_time2 = ConvertTime(time2, 'd').slug_date
 from date_time_literal import ConvertTime
 from datetime import datetime
 time = datetime.now()
-convert_time = ConvertTime(time, 'd').slug_date_time # Converts the DateTime object to days
-convert_time1 = ConvertTime(time, 'h').slug_date_time # Converts the DateTime object to hours
-convert_time2 = ConvertTime(time, 'm').slug_date_time # Converts the DateTime object to minutes
+convert_time = ConvertTime(time, 'd').convert_time # Converts the DateTime object to days
+convert_time1 = ConvertTime(time, 'h').convert_time # Converts the DateTime object to hours
+convert_time2 = ConvertTime(time, 'm').convert_time # Converts the DateTime object to minutes
 
 # The default conversion if none is specified is to seconds
 ```
 
-### CHECK DATE-TIME OR DATE DIFFERENCE BETWEEN TWO DATE-TIME OR DATE LITERALS
+### CHECK DATE-TIME OR DATE DIFFERENCE BETWEEN TWO DATE-TIME OR DATE OBJECTS
 
 ```python
 from date_time_literal import ConvertTime
 from datetime import datetime
 from django.utils import timezone
 time = datetime.now()
-convert_time = ConvertTime(time, 'h').slug_date_time
+convert_time = ConvertTime(time, 'h').convert_time
 from date_time_literal import date_time_diff, date_diff
-convert_time2 = ConvertTime(time, 'm').slug_date_time
+convert_time2 = ConvertTime(time, 'm').convert_time
 date1 = '2021-05-31'
 date2 = '2021-03-21'
 date_time1 = timezone.now()
@@ -91,7 +91,7 @@ date_time_l = date_time_diff(date_time1, date_time2, 'd')
 
 ```
 
-## Convert between time and dates
+## Convert between time and date objects
 You can also use the convert_time function to convert between times
 
 ```python
@@ -110,7 +110,7 @@ To get a rather comprehensive idea of how the package works, copy the code below
 was updated to be more efficient and now allows for week conversion as well in version 1.0.8
 
 ```python
-from date_time_literal import ConvertTime, DateDiff, date_diff, convert_time
+from date_time_literal import ConvertTime, DateDiff, date_diff, convert_time, date_time_diff
 from datetime import datetime
 
 t = ConvertTime('2021-05-31 23:16:55.321568', 'd')
@@ -118,11 +118,12 @@ p = ConvertTime(datetime.now(), 'd')
 i = ConvertTime('2021-05-31 23:16:55+00:00', 'd')
 d = ConvertTime('2021-05-31', time_format='d')
 e = DateDiff('2021-05-31', '2021-04-31', 'd')
-print(t.slug_date_time)
-print(i.slug_date_time)
-print(d.slug_date)
+print(t.convert_time)
+print(i.convert_time)
+print(d.convert)
 print(e.date_diff)
 print(date_diff('2021-08-31', '2021-05-30', 'D'))
+print(date_time_diff('2021-04-30 21:58:50+00:00', '2021-04-30 10:58:55+00:00', 'H'))
 print(convert_time(1, "y", 'h'))
 print(convert_time(365, 'd', 'y'))
 

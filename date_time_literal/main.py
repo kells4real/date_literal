@@ -7,13 +7,16 @@ if __name__ == "__main__":
     p = ConvertTime(datetime.now(), 'd')
     i = ConvertTime('2021-05-31 23:16:55+00:00', 'd')
     d = ConvertTime('2021-05-31', time_format='d')
-    e = DateDiff('2021-05-31 23:16:55+00:00', '2021-04-30 23:16:55+00:00', 'h')
-    print(t.slug_date_time)
-    print(i.slug_date_time)
-    print(d.slug_date)
-    print(e.date_diff)
-    print(date_time_diff('2021-04-30 21:56:50+00:00', '2021-04-30 10:58:55+00:00', 'm'))
-    print(convert_time(1, "w", 'y'))
+    e = DateDiff('2021-05-31 23:16:55+00:00', '2021-04-30 23:16:55+00:00', 'D')
+    print(t.convert)
+    print(i.convert_time)
+    print(p.convert)
+    print(d.convert)
+    print(d.convert)
+    print(e.date_time_diff)
+    print(date_time_diff('2021-04-30 21:58:50+00:00', '2021-04-30 10:58:55+00:00', 'H'))
+    print(date_diff('2021-06-30', '2021-05-30', 'H'))
+    print(convert_time(1, "y", 'w'))
 
 
 
