@@ -12,8 +12,9 @@ if __name__ == "__main__":
     print(i.slug_date_time)
     print(d.slug_date)
     print(e.date_diff)
-    print(date_time_diff('2021-04-30 22:56:50+00:00', '2021-04-30 20:58:55+00:00', 'm'))
-    print(convert_time(1, "y", 'h'))
+    print(date_time_diff('2021-04-30 21:56:50+00:00', '2021-04-30 10:58:55+00:00', 'm'))
+    print(convert_time(1, "w", 'y'))
+
 
 
 

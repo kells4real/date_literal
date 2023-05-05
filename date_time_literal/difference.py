@@ -1,4 +1,3 @@
-
 # Returns more accurate readings
 def date_time_diff(time1, time2, time_='s'):
     # time 1
@@ -56,6 +55,7 @@ def date_time_diff(time1, time2, time_='s'):
     else:
         return result
 
+
 def date_diff(time1, time2, time_='s'):
     # time 1
     slug_time = str(time1)
@@ -101,100 +101,21 @@ def date_diff(time1, time2, time_='s'):
         return get_secs - get_secs2
 
 
+CONVERSION_FACTORS = {
+    "Y": {"W": 365 / 7, "D": 365, "H": 365 * 24, "M": 365 * 24 * 60, "S": 365 * 24 * 60 * 60},
+    "W": {"Y": 1 / 52.18, "D": 7, "H": 7 * 24, "M": 7 * 24 * 60, "S": 7 * 24 * 60 * 60},
+    "D": {"Y": 1 / 365, "W": 1 / 7, "H": 24, "M": 24 * 60, "S": 24 * 60 * 60},
+    "H": {"Y": 1 / (365 * 24), "W": 1 / (7 * 24), "D": 1 / 24, "M": 60, "S": 60 * 60},
+    "M": {"Y": 1 / (365 * 24 * 60), "W": 1 / (7 * 24 * 60), "D": 1 / (24 * 60), "H": 1 / 60, "S": 60},
+    "S": {"Y": 1 / (365 * 24 * 60 * 60), "W": 1 / (7 * 24 * 60 * 60), "D": 1 / (24 * 60 * 60), "H": 1 / (60 * 60),
+          "M": 1 / 60}
+}
+
+
 def convert_time(value, from_, to):
-    if from_ == "Y" or from_ == "y":
-        if to == "D" or to == "d":
-            v = value * 365
-            return v
-        elif to == "H" or to == 'h':
-            v = value * 365 * 24
-            return v
-        elif to == "M" or to == "m":
-            v = value * 365 * 24 * 60
-            return v
-        else:
-            v = value * 365 * 24 * 60 * 60
-            return v
+    if from_.upper() == to.upper():
+        return value
 
-    elif from_ == "D" or from_ == "d":
-        if to == "Y" or to == "y":
-            v = value / 365
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        elif to == "H" or to == 'h':
-            v = value * 24
-            return v
-        elif to == "M" or to == "m":
-            v = value * 24 * 60
-            return v
-        else:
-            v = value * 24 * 60 * 60
-            return v
+    factor = CONVERSION_FACTORS[from_.upper()][to.upper()]
 
-    elif from_ == "H" or from_ == "h":
-        if to == "D" or to == "d":
-            v = value / 24
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        elif to == "Y" or to == 'y':
-            v = (value / 24) / 365
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        elif to == "M" or to == "m":
-            v = value * 60
-            return v
-        else:
-            v = value * 60 * 60
-            return v
-
-    elif from_ == "M" or from_ == "m":
-        if to == "D" or to == "d":
-            v = (value / 60) / 24
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        elif to == "Y" or to == 'y':
-            v = ((value / 60) / 24) / 365
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        elif to == "H" or to == "h":
-            v = value / 60
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        else:
-            v = value * 60
-            return v
-
-    elif from_ == "S" or from_ == "s":
-        if to == "D" or to == "d":
-            v = ((value / 60) / 60) / 24
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        elif to == "Y" or to == 'y':
-            v = (((value / 60) / 60) / 24) / 365
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        elif to == "H" or to == "h":
-            v = (value / 60) / 60
-            if str(v).split('.')[1] != '0':
-                return round(v, 5)
-            else:
-                return int(v)
-        else:
-            v = value * 60
-            return v
+    return round(value * factor, 2)

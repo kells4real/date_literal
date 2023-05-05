@@ -90,7 +90,8 @@ print(convert_time(5, 'd', 's')) # Converts 5 days to seconds
 ```
 
 ### Some Basic use cases
-To get a rather comprehensive idea of how the package works, copy the code below and run it.
+To get a rather comprehensive idea of how the package works, copy the code below and run it. The convert_time function
+was updated to be more efficient and now allows for week conversion as well in version 1.0.8
 
 ```python
 from date_time_literal import ConvertTime, DateDiff, date_diff, convert_time
